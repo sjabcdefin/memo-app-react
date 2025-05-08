@@ -1,22 +1,21 @@
-function MemoEdit({ memos }) {
+import { useState } from "react";
+
+function MemoEdit({ memo, onChangeMemo, onDeleteMemo }) {
+  const [content, setContent] = useState(memo.content);
+
   return (
-    <div className="wrapper">
-      <h1>編集</h1>
-      <div className="container">
-        <ul className="memo-list">
-          {memos.map((memo) => (
-            <li key={memo.id}>
-              <a href="">{memo.content.split("\n")[0]}</a>
-            </li>
-          ))}
-        </ul>
-        <div className="editor">
-          <textarea className="memo-content">{memos[0].content}</textarea>
-          <div className="button-group">
-            <button>更新</button>
-            <button>削除</button>
-          </div>
-        </div>
+    <div className="editor">
+      <textarea
+        name="memoContent"
+        className="memo-content"
+        value={content}
+        onChange={(e) => setContent(e.target.value)}
+      />
+      <div className="button-group">
+        <button onClick={() => onChangeMemo({ ...memo, content: content })}>
+          更新
+        </button>
+        <button onClick={() => onDeleteMemo(memo.id)}>削除</button>
       </div>
     </div>
   );
