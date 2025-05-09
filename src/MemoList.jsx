@@ -40,27 +40,19 @@ function MemoList() {
         <ul className="memo-list">
           {memos.map((memo) => (
             <li key={memo.id}>
-              <a
-                href=""
-                className={selectedId === memo.id ? "selected" : ""}
-                onClick={(e) => {
-                  e.preventDefault();
-                  setSelectedId(memo.id);
-                }}
+              <button
+                className={
+                  selectedId === memo.id ? undefined : "link-style-btn"
+                }
+                onClick={() => setSelectedId(memo.id)}
               >
                 {memo.content.split("\n")[0]}
-              </a>
+              </button>
             </li>
           ))}
-          <a
-            href=""
-            onClick={(e) => {
-              e.preventDefault();
-              handleAddMemo();
-            }}
-          >
+          <button className="link-style-btn" onClick={() => handleAddMemo()}>
             +
-          </a>
+          </button>
         </ul>
         {selectedMemo && (
           <MemoEdit

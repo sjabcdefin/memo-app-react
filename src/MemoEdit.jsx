@@ -12,10 +12,15 @@ function MemoEdit({ memo, onChangeMemo, onDeleteMemo }) {
         onChange={(e) => setContent(e.target.value)}
       />
       <div className="button-group">
-        <button onClick={() => onChangeMemo({ ...memo, content: content })}>
+        <button
+          className="btn"
+          onClick={() => onChangeMemo({ ...memo, content: content })}
+        >
           更新
         </button>
-        <button onClick={() => onDeleteMemo(memo.id)}>削除</button>
+        <button className="btn" onClick={() => onDeleteMemo(memo.id)}>
+          削除
+        </button>
       </div>
     </div>
   );
