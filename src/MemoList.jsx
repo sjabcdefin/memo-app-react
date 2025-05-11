@@ -1,16 +1,22 @@
-import { useState, useReducer } from "react";
+import { useState, useReducer, useEffect } from "react";
 import MemoEdit from "./MemoEdit.jsx";
 import memosReducer from "./memosReducer.jsx";
 
-let nextId = 0;
-
 function MemoList() {
+  const savedMemos = localStorage.getItem("memos");
+  const loadedMemos = savedMemos ? JSON.parse(savedMemos) : [];
+
   const [selectedId, setSelectedId] = useState(null);
-  const [memos, dispatch] = useReducer(memosReducer, []);
+  const [memos, dispatch] = useReducer(memosReducer, loadedMemos);
   const selectedMemo = memos.find((memo) => memo.id === selectedId);
 
+  useEffect(() => {
+    localStorage.setItem("memos", JSON.stringify(memos));
+  }, [memos]);
+
   function handleAddMemo() {
-    const newId = nextId++;
+    const maxId = memos.reduce((max, memo) => Math.max(max, memo.id), 0);
+    const newId = maxId + 1;
     setSelectedId(newId);
     dispatch({
       type: "added",
