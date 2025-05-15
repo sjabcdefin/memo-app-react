@@ -1,4 +1,4 @@
-//import "./App.css";
+import "./App.css";
 import MemoList from "./MemoList.jsx";
 
 function App() {

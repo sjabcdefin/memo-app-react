@@ -1,17 +1,18 @@
 import { useState } from "react";
+import "./MemoEdit.css";
 
 function MemoEdit({ memo, onChangeMemo, onDeleteMemo }) {
   const [content, setContent] = useState(memo.content);
 
   return (
-    <div className="editor">
+    <div className="memo-editor">
       <textarea
         name="memoContent"
-        className="memo-content"
+        className="editor-content"
         value={content}
         onChange={(e) => setContent(e.target.value)}
       />
-      <div className="button-group">
+      <div className="btn-group">
         <button
           className="btn"
           onClick={() => onChangeMemo({ ...memo, content: content })}

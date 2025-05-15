@@ -1,6 +1,7 @@
 import { useState, useReducer, useEffect } from "react";
 import MemoEdit from "./MemoEdit.jsx";
 import memosReducer from "./memosReducer.jsx";
+import "./MemoList.css";
 
 function MemoList() {
   const savedMemos = localStorage.getItem("memos");
@@ -40,23 +41,21 @@ function MemoList() {
   }
 
   return (
-    <div className="wrapper">
+    <div className="memo-page">
       <h1>{selectedMemo ? "編集" : "一覧"} </h1>
-      <div className="container">
+      <div className="memo-layout">
         <ul className="memo-list">
           {memos.map((memo) => (
             <li key={memo.id}>
               <button
-                className={
-                  selectedId === memo.id ? undefined : "link-style-btn"
-                }
+                className={selectedId === memo.id ? undefined : "link-btn"}
                 onClick={() => setSelectedId(memo.id)}
               >
                 {memo.content.split("\n")[0]}
               </button>
             </li>
           ))}
-          <button className="link-style-btn" onClick={() => handleAddMemo()}>
+          <button className="link-btn" onClick={() => handleAddMemo()}>
             +
           </button>
         </ul>

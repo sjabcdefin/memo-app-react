@@ -29,79 +29,9 @@ button {
   cursor: pointer;
 }
 
-button.btn {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  background-color: #1a1a1a;
-  transition: border-color 0.25s;
-}
-
-button.btn:hover {
-  border-color: #646cff;
-}
-
-button.link-style-btn {
-  color: #646cff;
-  text-decoration: underline;
-}
-
-button.link-style-btn:hover {
-  color: #ffffff;
-}
-
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
     background-color: #ffffff;
   }
-  button.btn {
-    background-color: #f9f9f9;
-  }
-  button.link-style-btn:hover {
-    color: #213547;
-  }
-}
-
-.wrapper {
-  height: 100%;
-  width: 100%;
-  padding: 1em;
-}
-
-.container {
-  display: flex;
-  height: 90%;
-  width: 100%;
-  margin-top: 20px;
-  border-radius: 8px;
-  border: 1px solid black;
-}
-
-.memo-list {
-  width: 50%;
-  padding: 1em;
-  font-size: 1.4rem;
-  line-height: 1.8;
-}
-
-.editor {
-  width: 50%;
-  padding: 1em;
-}
-
-.memo-content {
-  height: 50%;
-  width: 100%;
-  padding: 0.5em;
-  font-size: 1.4rem;
-  line-height: 1.5;
-  border: 1px solid #646cff;
-  border-radius: 8px;
-}
-
-.button-group {
-  display: flex;
-  justify-content: space-around;
-  padding: 1em;
 }
