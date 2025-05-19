@@ -18,21 +18,3 @@
   justify-content: space-around;
   padding: 1em;
 }
-
-button.btn {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  background-color: #1a1a1a;
-  transition: border-color 0.25s;
-}
-
-button.btn:hover {
-  border-color: #646cff;
-}
-
-@media (prefers-color-scheme: light) {
-  button.btn {
-    background-color: #f9f9f9;
-  }
-}

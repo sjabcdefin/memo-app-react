@@ -10,6 +10,8 @@ function MemoList() {
   const [selectedMemo, setSelectedMemo] = useState(null);
   const [memos, dispatch] = useReducer(memosReducer, loadedMemos);
 
+  const [isLogin, setIsLogin] = useState(false);
+
   useEffect(() => {
     localStorage.setItem("memos", JSON.stringify(memos));
   }, [memos]);
@@ -41,7 +43,12 @@ function MemoList() {
 
   return (
     <div className="memo-page">
-      <h1>{selectedMemo ? "編集" : "一覧"} </h1>
+      <div className="memo-header">
+        <h1>{selectedMemo ? "編集" : "一覧"} </h1>
+        <button className="btn" onClick={() => setIsLogin(!isLogin)}>
+          {isLogin ? "ログアウト" : "ログイン"}
+        </button>
+      </div>
       <div className="memo-layout">
         <ul className="memo-list">
           {memos.map((memo) => (
@@ -66,6 +73,7 @@ function MemoList() {
             memo={selectedMemo}
             onChangeMemo={handleChangeMemo}
             onDeleteMemo={handleDeleteMemo}
+            isLogin={isLogin}
           />
         )}
       </div>
