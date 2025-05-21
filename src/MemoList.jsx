@@ -2,6 +2,7 @@ import { useState, useReducer, useEffect } from "react";
 import MemoEdit from "./MemoEdit.jsx";
 import memosReducer from "./memosReducer.jsx";
 import "./MemoList.css";
+import { LoginContext } from "./LoginContext.jsx";
 
 function MemoList() {
   const savedMemos = localStorage.getItem("memos");
@@ -68,13 +69,14 @@ function MemoList() {
           </button>
         </ul>
         {selectedMemo && (
-          <MemoEdit
-            key={selectedMemo.id}
-            memo={selectedMemo}
-            onChangeMemo={handleChangeMemo}
-            onDeleteMemo={handleDeleteMemo}
-            isLogin={isLogin}
-          />
+          <LoginContext.Provider value={isLogin}>
+            <MemoEdit
+              key={selectedMemo.id}
+              memo={selectedMemo}
+              onChangeMemo={handleChangeMemo}
+              onDeleteMemo={handleDeleteMemo}
+            />
+          </LoginContext.Provider>
         )}
       </div>
     </div>
