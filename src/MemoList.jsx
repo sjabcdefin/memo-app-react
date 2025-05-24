@@ -2,7 +2,7 @@ import { useState, useReducer, useEffect } from "react";
 import MemoEdit from "./MemoEdit.jsx";
 import memosReducer from "./memosReducer.jsx";
 import "./MemoList.css";
-import { LoginContext } from "./LoginContext.jsx";
+import { useLogin } from "./login-hooks.jsx";
 
 function MemoList() {
   const savedMemos = localStorage.getItem("memos");
@@ -11,7 +11,7 @@ function MemoList() {
   const [selectedMemo, setSelectedMemo] = useState(null);
   const [memos, dispatch] = useReducer(memosReducer, loadedMemos);
 
-  const [isLogin, setIsLogin] = useState(false);
+  const [isLogin, switchLoginState] = useLogin();
 
   useEffect(() => {
     localStorage.setItem("memos", JSON.stringify(memos));
@@ -46,7 +46,7 @@ function MemoList() {
     <div className="memo-page">
       <div className="memo-header">
         <h1>{selectedMemo ? "編集" : "一覧"} </h1>
-        <button className="btn" onClick={() => setIsLogin(!isLogin)}>
+        <button className="btn" onClick={switchLoginState}>
           {isLogin ? "ログアウト" : "ログイン"}
         </button>
       </div>
@@ -69,14 +69,12 @@ function MemoList() {
           </button>
         </ul>
         {selectedMemo && (
-          <LoginContext.Provider value={isLogin}>
-            <MemoEdit
-              key={selectedMemo.id}
-              memo={selectedMemo}
-              onChangeMemo={handleChangeMemo}
-              onDeleteMemo={handleDeleteMemo}
-            />
-          </LoginContext.Provider>
+          <MemoEdit
+            key={selectedMemo.id}
+            memo={selectedMemo}
+            onChangeMemo={handleChangeMemo}
+            onDeleteMemo={handleDeleteMemo}
+          />
         )}
       </div>
     </div>

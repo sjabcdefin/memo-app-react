@@ -1,10 +1,10 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import "./MemoEdit.css";
-import { LoginContext } from "./LoginContext.jsx";
+import { useLogin } from "./login-hooks.jsx";
 
 function MemoEdit({ memo, onChangeMemo, onDeleteMemo }) {
   const [content, setContent] = useState(memo.content);
-  const isLogin = useContext(LoginContext);
+  const [isLogin] = useLogin();
 
   return (
     <div className="memo-editor">
