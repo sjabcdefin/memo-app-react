@@ -15,7 +15,7 @@ function MemoEdit({ memo, onChangeMemo, onDeleteMemo }) {
       <div className="btn-group">
         <button
           className="btn"
-          onClick={() => onChangeMemo({ ...memo, content: content })}
+          onClick={() => onChangeMemo({ ...memo, content })}
         >
           更新
         </button>
