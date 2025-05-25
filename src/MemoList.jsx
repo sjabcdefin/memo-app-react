@@ -7,9 +7,8 @@ function MemoList() {
   const savedMemos = localStorage.getItem("memos");
   const loadedMemos = savedMemos ? JSON.parse(savedMemos) : [];
 
-  const [selectedId, setSelectedId] = useState(null);
+  const [selectedMemo, setSelectedMemo] = useState(null);
   const [memos, dispatch] = useReducer(memosReducer, loadedMemos);
-  const selectedMemo = memos.find((memo) => memo.id === selectedId);
 
   useEffect(() => {
     localStorage.setItem("memos", JSON.stringify(memos));
@@ -17,12 +16,11 @@ function MemoList() {
 
   function handleAddMemo() {
     const maxId = memos.reduce((max, memo) => Math.max(max, memo.id), 0);
-    const newId = maxId + 1;
-    setSelectedId(newId);
+    const newMemo = { id: maxId + 1, content: "新規メモ" };
+    setSelectedMemo(newMemo);
     dispatch({
       type: "added",
-      id: newId,
-      content: "新規メモ",
+      memo: newMemo,
     });
   }
 
@@ -33,10 +31,11 @@ function MemoList() {
     });
   }
 
-  function handleDeleteMemo(memoId) {
+  function handleDeleteMemo(memo) {
+    setSelectedMemo(null);
     dispatch({
       type: "deleted",
-      id: memoId,
+      memo,
     });
   }
 
@@ -48,8 +47,10 @@ function MemoList() {
           {memos.map((memo) => (
             <li key={memo.id}>
               <button
-                className={selectedId === memo.id ? undefined : "link-btn"}
-                onClick={() => setSelectedId(memo.id)}
+                className={
+                  selectedMemo?.id === memo.id ? undefined : "link-btn"
+                }
+                onClick={() => setSelectedMemo(memo)}
               >
                 {memo.content.split("\n")[0]}
               </button>

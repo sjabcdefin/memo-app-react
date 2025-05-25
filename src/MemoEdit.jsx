@@ -19,7 +19,7 @@ function MemoEdit({ memo, onChangeMemo, onDeleteMemo }) {
         >
           更新
         </button>
-        <button className="btn" onClick={() => onDeleteMemo(memo.id)}>
+        <button className="btn" onClick={() => onDeleteMemo(memo)}>
           削除
         </button>
       </div>
