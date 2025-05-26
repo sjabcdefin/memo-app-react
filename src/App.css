@@ -4,6 +4,11 @@
   padding: 1em;
 }
 
+.memo-header {
+  display: flex;
+  justify-content: space-between;
+}
+
 .memo-layout {
   display: flex;
   height: 90%;
@@ -16,5 +21,27 @@
 @media (prefers-color-scheme: light) {
   .memo-layout {
     border: 1px solid black;
+  }
+}
+
+button.btn {
+  font-size: 1.5em;
+  min-width: 150px;
+  display: block;
+  text-align: center;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  background-color: #1a1a1a;
+  transition: border-color 0.25s;
+}
+
+button.btn:hover {
+  border-color: #646cff;
+}
+
+@media (prefers-color-scheme: light) {
+  button.btn {
+    background-color: #f9f9f9;
   }
 }
