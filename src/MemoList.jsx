@@ -64,9 +64,11 @@ function MemoList() {
               </button>
             </li>
           ))}
-          <button className="link-btn" onClick={() => handleAddMemo()}>
-            +
-          </button>
+          {isLogin && (
+            <button className="link-btn" onClick={() => handleAddMemo()}>
+              +
+            </button>
+          )}
         </ul>
         {selectedMemo && (
           <MemoEdit
