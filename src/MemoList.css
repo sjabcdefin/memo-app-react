@@ -1,0 +1,21 @@
+.memo-list {
+  width: 50%;
+  padding: 1em;
+  font-size: 1.4rem;
+  line-height: 1.8;
+}
+
+button.link-btn {
+  color: #646cff;
+  text-decoration: underline;
+}
+
+button.link-btn:hover {
+  color: #ffffff;
+}
+
+@media (prefers-color-scheme: light) {
+  button.link-btn:hover {
+    color: #213547;
+  }
+}

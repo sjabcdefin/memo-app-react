@@ -1,12 +1,71 @@
-# React + Vite
+## React で SPA を作る
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+フィヨルドブートキャンプの「React で SPA を作る」プラクティスの提出物をまとめるリポジトリです。
 
-Currently, two official plugins are available:
+# メモアプリ
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+このメモアプリは、Vite と React を使用して作成された SPA（シングルページアプリケーション）です。
+ローカル環境で実行することができ、メモの一覧表示、詳細表示、追加、編集、削除ができます。
 
-## Expanding the ESLint configuration
+## インストール手順
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### 1. リポジトリのクローン
+
+GitHubからこのリポジトリをクローンしてください。
+
+### 2. ディレクトリに移動
+
+クローンしたリポジトリのディレクトリに移動します。
+
+### 3. 必要な npm パッケージのインストール
+
+以下のコマンドを実行します。
+
+```
+npm install
+```
+
+### 4. アプリケーションの起動
+
+以下のコマンドを実行します。
+
+```
+npm run dev
+```
+
+### 5. アプリケーションへのアクセス
+
+ブラウザを開いて、以下のURLにアクセスしてください。
+
+```
+http://localhost:5173/
+```
+
+### 7. アプリケーションの停止
+
+`CTRL` + `c`で停止してください。
+
+## アプリケーションの使用方法
+
+### 1. メモの一覧表示
+
+アプリケーションにアクセスすると、登録されたメモの一覧が表示されます。
+
+### 2. メモの追加
+
+「＋」を押下すると、「新規メモ」が作成されます。
+内容を編集し、「更新」ボタンを押下します。
+
+### 3. メモの編集
+
+メモの一覧ページに表示されているメモを選択すると、そのメモを編集できます。
+変更を加えたら、「更新」ボタンを押下します。
+
+### 4. メモの削除
+
+メモの編集ページで「削除」ボタンを押下すると、そのメモを削除できます。
+削除後は、メモの一覧ページに遷移します。
+
+## 注意事項
+
+- メモの内容は、ブラウザの LocalStorage に保存されるため、アプリケーションを再起動してもデータは保持されます。
