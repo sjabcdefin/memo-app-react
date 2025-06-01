@@ -2,7 +2,7 @@ import { useState, useReducer, useEffect } from "react";
 import MemoEdit from "./MemoEdit.jsx";
 import memosReducer from "./memosReducer.jsx";
 import "./MemoList.css";
-import { useLogin } from "./login-hooks.jsx";
+import { useLogin } from "./hooks/useLogin.jsx";
 
 function MemoList() {
   const savedMemos = localStorage.getItem("memos");

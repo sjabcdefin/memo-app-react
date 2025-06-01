@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./MemoEdit.css";
-import { useLogin } from "./login-hooks.jsx";
+import { useLogin } from "./hooks/useLogin.jsx";
 
 function MemoEdit({ memo, onChangeMemo, onDeleteMemo }) {
   const [content, setContent] = useState(memo.content);
