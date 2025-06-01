@@ -7,7 +7,7 @@ export function LoginProvider({ children }) {
   const switchLoginState = () => setIsLogin(!isLogin);
 
   return (
-    <LoginContext.Provider value={[isLogin, switchLoginState]}>
+    <LoginContext.Provider value={{ isLogin, switchLoginState }}>
       {children}
     </LoginContext.Provider>
   );

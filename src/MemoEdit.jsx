@@ -4,7 +4,7 @@ import { useLogin } from "./login-hooks.jsx";
 
 function MemoEdit({ memo, onChangeMemo, onDeleteMemo }) {
   const [content, setContent] = useState(memo.content);
-  const [isLogin] = useLogin();
+  const { isLogin } = useLogin();
 
   return (
     <div className="memo-editor">

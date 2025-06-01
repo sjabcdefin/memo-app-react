@@ -11,7 +11,7 @@ function MemoList() {
   const [selectedMemo, setSelectedMemo] = useState(null);
   const [memos, dispatch] = useReducer(memosReducer, loadedMemos);
 
-  const [isLogin, switchLoginState] = useLogin();
+  const { isLogin, switchLoginState } = useLogin();
 
   useEffect(() => {
     localStorage.setItem("memos", JSON.stringify(memos));
