@@ -2,6 +2,7 @@ import { useState, useReducer, useEffect } from "react";
 import MemoEdit from "./MemoEdit.jsx";
 import memosReducer from "./memosReducer.jsx";
 import "./MemoList.css";
+import { useLogin } from "./hooks/useLogin.jsx";
 
 function MemoList() {
   const savedMemos = localStorage.getItem("memos");
@@ -9,6 +10,8 @@ function MemoList() {
 
   const [selectedMemo, setSelectedMemo] = useState(null);
   const [memos, dispatch] = useReducer(memosReducer, loadedMemos);
+
+  const { isLogin, switchLoginState } = useLogin();
 
   useEffect(() => {
     localStorage.setItem("memos", JSON.stringify(memos));
@@ -41,7 +44,12 @@ function MemoList() {
 
   return (
     <div className="memo-page">
-      <h1>{selectedMemo ? "編集" : "一覧"} </h1>
+      <div className="memo-header">
+        <h1>{selectedMemo ? "編集" : "一覧"} </h1>
+        <button className="btn" onClick={switchLoginState}>
+          {isLogin ? "ログアウト" : "ログイン"}
+        </button>
+      </div>
       <div className="memo-layout">
         <ul className="memo-list">
           {memos.map((memo) => (
@@ -56,9 +64,11 @@ function MemoList() {
               </button>
             </li>
           ))}
-          <button className="link-btn" onClick={() => handleAddMemo()}>
-            +
-          </button>
+          {isLogin && (
+            <button className="link-btn" onClick={() => handleAddMemo()}>
+              +
+            </button>
+          )}
         </ul>
         {selectedMemo && (
           <MemoEdit
